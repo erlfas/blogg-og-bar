@@ -4,80 +4,43 @@ from .models import ShowcaseApp
 
 
 def index(request):
-    """Main landing page for blottogbar.no."""
+    """Hovedside for blottogbar.no."""
     db_apps = list(ShowcaseApp.objects.all())
 
-    # Default featured showcase apps if database is not populated
     default_apps = [
         {
             'title': 'Simple Planner',
             'slug': 'simple-planner',
-            'tagline': 'Rask og distrasjonsfri oppgave- og prosjektstyring.',
-            'description': 'Et minimalistisk Kanban-brett bygget med fokus på hastighet, Markdown-støtte og ren oversikt. Ingen overflødige knapper eller tunge menyer.',
+            'tagline': 'Enkel oppgavestyring basert på Kanban.',
+            'description': 'Et minimalistisk verktøy for strukturering av oppgaver med tavlevisning og støtte for Markdown. Bygget for å gi oversikt uten overflødige valg.',
             'url': 'https://simpleplanner.blottogbar.no',
             'status': 'live',
-            'badge_label': 'Live Nå',
+            'badge_label': 'Tilgjengelig',
             'ascii_icon': '┌─┬─┬─┐\n│█│▒│ │\n└─┴─┴─┘',
             'features': [
-                'Lynrask Kanban-arbeidsflyt',
-                'Dra-og-slipp oppgavestyring',
-                'Innebygd Markdown & syntax highlighting',
-                'Selvstendig og responsivt',
+                'Tavlevisning (Kanban)',
+                'Dra-og-slipp av oppgaver',
+                'Støtte for Markdown',
+                'Rent grensesnitt',
             ],
-            'button_text': 'Åpne Simple Planner',
-        },
-        {
-            'title': 'Focus Timer',
-            'slug': 'focus-timer',
-            'tagline': 'Ren tidsblokkering og arbeidsro.',
-            'description': 'En enkel, visuell timer for dyp konsentrasjon. Null varsler, null støy — bare deg og oppgaven.',
-            'url': '',
-            'status': 'upcoming',
-            'badge_label': 'Under utvikling',
-            'ascii_icon': '╭──────╮\n│ 25:00│\n╰──────╯',
-            'features': [
-                'Pomodoro & flyt-intervaller',
-                'Minimalistisk lydprofil',
-                'Lokal statistikk',
-            ],
-            'button_text': 'Kommer snart',
-        },
-        {
-            'title': 'Micro Notes',
-            'slug': 'micro-notes',
-            'tagline': 'Raske notater uten synk-forsinkelser.',
-            'description': 'Fang tanker i farten med ren tekst. Eksporter til Markdown når du er klar.',
-            'url': '',
-            'status': 'upcoming',
-            'badge_label': 'Konsept',
-            'ascii_icon': '┌──────┐\n│ > _  │\n└──────┘',
-            'features': [
-                'Umiddelbar lasting',
-                'Tastatursnarveier',
-                'Markdown-først',
-            ],
-            'button_text': 'Kommer snart',
+            'button_text': 'Gå til Simple Planner',
         },
     ]
 
     context = {
-        'featured_app': default_apps[0],
         'apps': db_apps if db_apps else default_apps,
         'principles': [
             {
-                'icon': '⚡',
-                'title': 'Lynrask & Lettvekt',
-                'desc': 'Ingen tunge rammeverk eller unødvendig JavaScript. Sidene og verktøyene laster på et blunk.',
+                'title': 'Avgrenset kjernefunksjonalitet',
+                'desc': 'Hver applikasjon løser en avgrenset oppgave og leverer kun nødvendig funksjonalitet. Når verktøyet fungerer etter hensikten, anses det som ferdig. Vi unngår kontinuerlig tilførsel av nye funksjoner som skaper unødvendig kompleksitet.',
             },
             {
-                'icon': '🎯',
-                'title': 'Ren funksjonalitet',
-                'desc': 'Verktøy som løser én oppgave usedvanlig godt, uten reklame, bloat eller forvirrende menyer.',
+                'title': 'Sikker og ressurseffektiv drift',
+                'desc': 'Videre forbedringer er begrenset til å opprettholde en stabil, sikker og kostnadseffektiv arkitektur med lavest mulig ressursbruk.',
             },
             {
-                'icon': '🔒',
-                'title': 'Personvern i høysetet',
-                'desc': 'Dine data forblir dine. Ingen aggressive sporere eller unødvendige tredjeparts-skript.',
+                'title': 'Gratis og uten reklame',
+                'desc': 'Tjenestene er gratis å benytte. Løsningene inneholder ingen reklame, kommersielle bindinger eller sporing.',
             },
         ],
     }
@@ -85,5 +48,5 @@ def index(request):
 
 
 def health_check(request):
-    """Simple health check endpoint for monitoring."""
+    """Enkelt endepunkt for helsesjekk."""
     return JsonResponse({'status': 'ok', 'app': 'blottogbar-landing'})
