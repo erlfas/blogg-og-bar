@@ -38,6 +38,37 @@ sudo bash deploy.sh
 
 ---
 
+## 🔄 Daily / Routine Deployments (Deploying Code Updates)
+
+Once the first-time setup is complete, deploying daily code updates takes **one command**.
+
+### Option 1: Run update on the VPS
+Whenever you push new changes to GitHub, SSH into your VPS and run:
+```bash
+cd /var/www/blottogbar && sudo bash deploy.sh
+```
+
+### Option 2: 1-Line Deployment from your Local Machine
+You can deploy directly from your local terminal without manually opening an SSH session:
+```bash
+# Push your code locally
+git push origin master
+
+# Trigger the remote deployment in one command
+ssh root@YOUR_VPS_IP "cd /var/www/blottogbar && bash deploy.sh"
+```
+
+### What `deploy.sh` does automatically during daily updates:
+1. **Pulls latest code:** Safely runs `git pull origin master`.
+2. **Preserves configuration:** Preserves your production `.env` file (database credentials, secret key, SSL settings).
+3. **Installs new dependencies:** Automatically installs/upgrades packages if `requirements.txt` was modified.
+4. **Applies database migrations:** Executes `python manage.py migrate --noinput`.
+5. **Collects static assets:** Refreshes `/var/www/blottogbar/static/` with `python manage.py collectstatic --noinput`.
+6. **Restarts service with zero downtime:** Gracefully restarts `gunicorn_blottogbar` and reloads Nginx.
+7. **Preserves SSL:** Keeps Let's Encrypt certificates intact.
+
+---
+
 ## Step-by-Step Manual Setup
 
 ### 1. PostgreSQL Database & User

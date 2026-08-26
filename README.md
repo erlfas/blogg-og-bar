@@ -47,10 +47,22 @@ Visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your browser.
 
 ---
 
-## 🚢 Production Deployment
+## 🚢 Production Deployment & Daily Updates
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) for full instructions or run:
-
+### Initial Setup
 ```bash
 sudo bash deploy.sh
+sudo certbot --nginx -d blottogbar.no -d www.blottogbar.no
 ```
+
+### Daily Updates (1-Command)
+Whenever you push code changes to GitHub, deploy them by running:
+```bash
+# On the VPS:
+cd /var/www/blottogbar && sudo bash deploy.sh
+
+# Or directly from your local terminal via SSH:
+ssh root@YOUR_VPS_IP "cd /var/www/blottogbar && bash deploy.sh"
+```
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for full architecture and configuration documentation.

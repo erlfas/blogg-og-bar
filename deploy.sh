@@ -106,30 +106,8 @@ chmod -R 755 "${APP_DIR}/static"
 
 # 7. Configure Gunicorn Systemd Service (Port 8001 / gunicorn_blottogbar)
 if [ ! -f "/etc/systemd/system/gunicorn_blottogbar.service" ]; then
-  echo "[*] Creating Gunicorn systemd service (gunicorn_blottogbar)..."
-  cat << EOF > /etc/systemd/system/gunicorn_blottogbar.service
-[Unit]
-Description=Gunicorn daemon for Blott og Bar Landing Page
-After=network.target postgresql.service
-
-[Service]
-User=www-data
-Group=www-data
-WorkingDirectory=${APP_DIR}
-EnvironmentFile=${APP_DIR}/.env
-ExecStart=${APP_DIR}/venv/bin/gunicorn \\
-          --workers 3 \\
-          --bind 127.0.0.1:${GUNICORN_PORT} \\
-          --access-logfile - \\
-          --error-logfile - \\
-          blottogbar_project.wsgi:application
-
-Restart=always
-RestartSec=3
-
-[Install]
-WantedBy=multi-user.target
-EOF
+  echo "[*] Installing Gunicorn systemd service from systemd/gunicorn_blottogbar.service..."
+  cp "${APP_DIR}/systemd/gunicorn_blottogbar.service" /etc/systemd/system/gunicorn_blottogbar.service
   systemctl daemon-reload
   systemctl enable gunicorn_blottogbar
 fi
@@ -140,32 +118,9 @@ systemctl restart gunicorn_blottogbar
 
 # 8. Configure Nginx (Preserves existing SSL / Certbot configuration!)
 if [ ! -f "/etc/nginx/sites-available/${DOMAIN}" ]; then
-  echo "[*] Creating initial Nginx configuration for ${DOMAIN} & ${WWW_DOMAIN}..."
-  cat << EOF > /etc/nginx/sites-available/${DOMAIN}
-server {
-    listen 80;
-    listen [::]:80;
-    server_name ${DOMAIN} ${WWW_DOMAIN};
-
-    client_max_body_size 10M;
-
-    location /static/ {
-        alias ${APP_DIR}/static/;
-        expires 30d;
-        access_log off;
-        add_header Cache-Control "public, max-age=2592000";
-    }
-
-    location / {
-        proxy_pass http://127.0.0.1:${GUNICORN_PORT};
-        proxy_set_header Host \$host;
-        proxy_set_header X-Real-IP \$remote_addr;
-        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto \$scheme;
-    }
-}
-EOF
-  ln -sf /etc/nginx/sites-available/${DOMAIN} /etc/nginx/sites-enabled/
+  echo "[*] Installing initial Nginx configuration from nginx/blottogbar.no.conf..."
+  cp "${APP_DIR}/nginx/blottogbar.no.conf" "/etc/nginx/sites-available/${DOMAIN}"
+  ln -sf "/etc/nginx/sites-available/${DOMAIN}" /etc/nginx/sites-enabled/
 fi
 
 nginx -t

@@ -1,0 +1,21 @@
+[Unit]
+Description=Gunicorn daemon for Blott og Bar Landing Page
+After=network.target postgresql.service
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/blottogbar
+EnvironmentFile=/var/www/blottogbar/.env
+ExecStart=/var/www/blottogbar/venv/bin/gunicorn \
+          --workers 3 \
+          --bind 127.0.0.1:8001 \
+          --access-logfile - \
+          --error-logfile - \
+          blottogbar_project.wsgi:application
+
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
