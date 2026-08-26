@@ -1,0 +1,229 @@
+{% extends "landing/base.html" %}
+
+{% block title %}Blott og Bar — Enkle, lynraske verktøy{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto px-6 py-12 md:py-20 space-y-24">
+
+    <!-- HERO SECTION -->
+    <section class="text-center max-w-3xl mx-auto space-y-6 pt-4">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 bg-neutral-100 border border-neutral-300/80 rounded-full text-[11px] font-mono font-medium text-neutral-800 shadow-2xs">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-dot"></span>
+            <span>Minimalistiske mikroverktøy</span>
+        </div>
+        
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-neutral-900 leading-[1.15]">
+            Verktøy skapt for å gjøre jobben — og komme seg ut av veien.
+        </h1>
+        
+        <p class="text-lg sm:text-xl text-neutral-600 font-normal leading-relaxed max-w-2xl mx-auto">
+            <strong class="font-semibold text-neutral-900">blott og bar</strong> er en samling kompromissløst enkle, lynraske webapplikasjoner bygget for ren arbeidsflyt, fokus og oversikt.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <a href="https://simpleplanner.blottogbar.no" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3.5 bg-black hover:bg-neutral-800 text-white font-semibold text-sm rounded-xl transition-all shadow-md active:scale-98">
+                <span>Åpne Simple Planner</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+            <a href="#apps" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 bg-white hover:bg-neutral-100 border border-neutral-300 text-neutral-800 font-semibold text-sm rounded-xl transition-colors">
+                Se alle verktøy
+            </a>
+        </div>
+    </section>
+
+    <!-- FEATURED HERO APP: SIMPLE PLANNER -->
+    <section id="featured-planner" class="relative">
+        <div class="border border-neutral-300/80 bg-neutral-900 text-white rounded-2xl p-6 sm:p-10 shadow-xl overflow-hidden relative">
+            
+            <!-- Background glow effect -->
+            <div class="absolute -right-20 -top-20 w-80 h-80 bg-neutral-700/30 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                <div class="lg:col-span-7 space-y-5">
+                    <div class="flex items-center space-x-3">
+                        <span class="inline-flex items-center space-x-1.5 px-2.5 py-1 bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-[11px] font-mono font-semibold rounded-full">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 pulse-dot"></span>
+                            <span>Flaggskip App • Live Nå</span>
+                        </span>
+                        <span class="text-xs text-neutral-400 font-mono">simpleplanner.blottogbar.no</span>
+                    </div>
+
+                    <div class="flex items-center space-x-3">
+                        <pre class="ascii-box text-xs font-bold leading-none bg-neutral-800 text-emerald-400 p-2 rounded-lg border border-neutral-700 select-none">
+┌─┬─┬─┐
+│█│▒│ │
+└─┴─┴─┘</pre>
+                        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Simple Planner</h2>
+                    </div>
+
+                    <p class="text-neutral-300 text-base sm:text-lg leading-relaxed">
+                        Et minimalistisk, raskt og ukomplisert Kanban-verktøy for oppgave- og prosjektstyring. Designet med full Markdown-støtte og et rent, rolig grensesnitt som lar deg konsentrere deg om det som faktisk betyr noe.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                        <div class="flex items-center space-x-2 text-xs text-neutral-300">
+                            <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Dra-og-slipp oppgavestyring</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-xs text-neutral-300">
+                            <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Innebygd Markdown-redigering</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-xs text-neutral-300">
+                            <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Null unødvendige menyer</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-xs text-neutral-300">
+                            <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Lynrask respons og navigasjon</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <a href="https://simpleplanner.blottogbar.no" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 px-6 py-3 bg-white hover:bg-neutral-100 text-black font-bold text-sm rounded-xl transition-all shadow-md active:scale-98">
+                            <span>Prøv Simple Planner</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Interactive / Visual Board Preview -->
+                <div class="lg:col-span-5 bg-neutral-950/80 border border-neutral-800 rounded-xl p-4 sm:p-5 font-mono text-xs text-neutral-300 space-y-3">
+                    <div class="flex items-center justify-between border-b border-neutral-800 pb-2">
+                        <div class="flex items-center space-x-1.5">
+                            <span class="w-2.5 h-2.5 rounded-full bg-neutral-700"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-neutral-700"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-neutral-700"></span>
+                        </div>
+                        <span class="text-[11px] text-neutral-500">kanban_board.md</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 text-[11px]">
+                        <!-- Column 1 -->
+                        <div class="bg-neutral-900/90 border border-neutral-800 rounded-lg p-2.5 space-y-2">
+                            <div class="font-bold text-neutral-400 uppercase text-[10px] tracking-wider flex justify-between items-center">
+                                <span>I arbeid</span>
+                                <span class="bg-neutral-800 px-1.5 py-0.5 rounded text-[9px] text-white">2</span>
+                            </div>
+                            <div class="bg-neutral-800/80 p-2 rounded border border-neutral-700 text-neutral-200">
+                                <p class="font-semibold text-white">Lansere landing page</p>
+                                <p class="text-[10px] text-neutral-400 mt-1">blottogbar.no</p>
+                            </div>
+                            <div class="bg-neutral-800/80 p-2 rounded border border-neutral-700 text-neutral-200">
+                                <p class="font-semibold text-white">Optimalisere ytelse</p>
+                                <p class="text-[10px] text-neutral-400 mt-1">Nginx & Gunicorn</p>
+                            </div>
+                        </div>
+
+                        <!-- Column 2 -->
+                        <div class="bg-neutral-900/90 border border-neutral-800 rounded-lg p-2.5 space-y-2">
+                            <div class="font-bold text-neutral-400 uppercase text-[10px] tracking-wider flex justify-between items-center">
+                                <span>Fullført</span>
+                                <span class="bg-emerald-900/60 text-emerald-400 px-1.5 py-0.5 rounded text-[9px]">1</span>
+                            </div>
+                            <div class="bg-neutral-800/80 p-2 rounded border border-emerald-900/40 text-neutral-200">
+                                <p class="font-semibold text-white line-through opacity-80">Bygge Simple Planner</p>
+                                <p class="text-[10px] text-emerald-400 mt-1">✓ Deployed</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center pt-1 text-[10px] text-neutral-500 font-sans">
+                        Enkelt, ryddig og oversiktlig.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ALL APPS CATALOG -->
+    <section id="apps" class="space-y-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-neutral-200 pb-4">
+            <div>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900">Verktøykassen</h2>
+                <p class="text-sm text-neutral-500 mt-1">Oversikt over tilgjengelige og planlagte verktøy under Blott og Bar.</p>
+            </div>
+            <span class="text-xs font-mono text-neutral-400">blottogbar.no ecosystem</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {% for app in apps %}
+            <div class="border border-neutral-200 bg-white rounded-xl p-6 flex flex-col justify-between card-hover shadow-xs relative">
+                <div class="space-y-4">
+                    <div class="flex items-start justify-between">
+                        <pre class="ascii-box text-xs font-bold leading-none bg-neutral-100 text-neutral-900 p-2 rounded-lg border border-neutral-200 select-none">{{ app.ascii_icon }}</pre>
+                        
+                        {% if app.status == 'live' %}
+                            <span class="inline-flex items-center space-x-1 px-2.5 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-mono font-medium rounded-full">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-dot"></span>
+                                <span>{{ app.badge_label|default:"Live" }}</span>
+                            </span>
+                        {% else %}
+                            <span class="inline-flex items-center px-2.5 py-0.5 bg-neutral-100 text-neutral-600 border border-neutral-200 text-[10px] font-mono font-medium rounded-full">
+                                {{ app.badge_label|default:"Kommer" }}
+                            </span>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-bold text-neutral-900 tracking-tight">{{ app.title }}</h3>
+                        <p class="text-xs font-medium text-neutral-500 mt-0.5">{{ app.tagline }}</p>
+                    </div>
+
+                    <p class="text-xs text-neutral-600 leading-relaxed">
+                        {{ app.description }}
+                    </p>
+
+                    {% if app.features %}
+                    <ul class="space-y-1.5 pt-2 border-t border-neutral-100 text-[11px] text-neutral-500">
+                        {% for feature in app.features %}
+                        <li class="flex items-center space-x-1.5">
+                            <span class="text-neutral-400">•</span>
+                            <span>{{ feature }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+
+                <div class="pt-6 mt-4 border-t border-neutral-100">
+                    {% if app.url %}
+                        <a href="{{ app.url }}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center space-x-1.5 px-4 py-2 bg-black hover:bg-neutral-800 text-white font-semibold text-xs rounded-lg transition-colors shadow-2xs">
+                            <span>{{ app.button_text|default:"Åpne applikasjon" }}</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    {% else %}
+                        <button disabled class="w-full inline-flex items-center justify-center px-4 py-2 bg-neutral-100 text-neutral-400 font-semibold text-xs rounded-lg cursor-not-allowed border border-neutral-200">
+                            {{ app.button_text|default:"Under utvikling" }}
+                        </button>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- PHILOSOPHY / VALUE PROPOSITION -->
+    <section id="philosophy" class="bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-8 sm:p-12 space-y-10">
+        <div class="max-w-2xl">
+            <h2 class="text-xs font-mono font-bold uppercase tracking-widest text-neutral-500">Prinsipper</h2>
+            <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-900 mt-1">Hvorfor «Blott og Bar»?</h3>
+            <p class="text-sm sm:text-base text-neutral-600 mt-2 leading-relaxed">
+                Moderne programvare er ofte overlesset med popups, komplekse abonnementsmodeller og funksjoner du aldri ba om. Blott og Bar er motvekten: rene, funksjonelle verktøy bygget på sunn fornuft.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {% for item in principles %}
+            <div class="bg-white border border-neutral-200/80 rounded-xl p-6 space-y-3 shadow-2xs">
+                <div class="text-2xl select-none">{{ item.icon }}</div>
+                <h4 class="font-bold text-base text-neutral-900 tracking-tight">{{ item.title }}</h4>
+                <p class="text-xs text-neutral-600 leading-relaxed">
+                    {{ item.desc }}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+</div>
+{% endblock %}
