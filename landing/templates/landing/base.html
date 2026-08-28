@@ -4,28 +4,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Blott og Bar{% endblock %}</title>
-    <meta name="description" content="Blott og Bar — Minimalistiske nettapplikasjoner med avgrenset kjernefunksjonalitet.">
+    <title>{% block title %}Blott og Bar — Minimalistiske og funksjonelle nettapplikasjoner{% endblock %}</title>
     
-    <!-- OpenGraph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.blottogbar.no/">
-    <meta property="og:title" content="Blott og Bar">
-    <meta property="og:description" content="Minimalistiske nettapplikasjoner med avgrenset kjernefunksjonalitet.">
+    <!-- Primære SEO-metakoder -->
+    <meta name="title" content="Blott og Bar — Minimalistiske og funksjonelle nettapplikasjoner">
+    <meta name="description" content="Blott og Bar tilbyr enkle, lynraske og uforstyrrede nettverktøy med ren kjernefunksjonalitet. Utforsk Simple Planner, Simple Flashcards og Simple Forum.">
+    <meta name="keywords" content="blott og bar, enkle verktøy, minimalistiske apper, simple planner, simple flashcards, simple forum, kanban, spaced repetition, diskusjonsforum, gratis nettverktøy, personvern, django norge">
+    <meta name="author" content="Erlend Heggelund">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://www.blottogbar.no/">
 
-    <!-- Tailwind & Fonts -->
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="no_NO">
+    <meta property="og:url" content="https://www.blottogbar.no/">
+    <meta property="og:site_name" content="Blott og Bar">
+    <meta property="og:title" content="Blott og Bar — Minimalistiske og funksjonelle nettapplikasjoner">
+    <meta property="og:description" content="Enkle, uforstyrrede nettapplikasjoner for planlegging, repetisjon og diskusjon. Gratis, uten reklame og med fokus på ren kjernefunksjonalitet.">
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://www.blottogbar.no/">
+    <meta name="twitter:title" content="Blott og Bar — Minimalistiske nettapplikasjoner">
+    <meta name="twitter:description" content="Enkle, uforstyrrede nettapplikasjoner for planlegging, repetisjon og diskusjon.">
+
+    <!-- Typografi og stiler -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'landing/css/styles.css' %}">
     
     <style>
         body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
     </style>
+
+    <!-- Strukturerte data (Schema.org JSON-LD for optimal SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://www.blottogbar.no/#website",
+          "url": "https://www.blottogbar.no/",
+          "name": "Blott og Bar",
+          "description": "Minimalistiske og funksjonelle nettapplikasjoner uten overflødig kompleksitet.",
+          "inLanguage": "nb-NO"
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://www.blottogbar.no/#organization",
+          "name": "Blott og Bar",
+          "url": "https://www.blottogbar.no/",
+          "founder": {
+            "@type": "Person",
+            "name": "Erlend Heggelund"
+          }
+        },
+        {
+          "@type": "ItemList",
+          "name": "Blott og Bar Applikasjoner",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@type": "SoftwareApplication",
+                "name": "Simple Planner",
+                "applicationCategory": "ProjectManagementApplication",
+                "operatingSystem": "Web",
+                "url": "https://simpleplanner.blottogbar.no",
+                "description": "Minimalistisk Kanban-oppgavestyring med dra-og-slipp og Markdown-støtte.",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "0",
+                  "priceCurrency": "NOK"
+                }
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@type": "SoftwareApplication",
+                "name": "Simple Flashcards",
+                "applicationCategory": "EducationalApplication",
+                "operatingSystem": "Web",
+                "url": "https://simplecards.blottogbar.no",
+                "description": "Repetisjonskort med SM-2-algoritmen (Spaced Repetition) og LaTeX-støtte.",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "0",
+                  "priceCurrency": "NOK"
+                }
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@type": "SoftwareApplication",
+                "name": "Simple Forum",
+                "applicationCategory": "DiscussionForumApplication",
+                "operatingSystem": "Web",
+                "url": "https://simpleforum.blottogbar.no",
+                "description": "Tekstbasert og lineært diskusjonsforum uten emojier eller bildeopplasting.",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "0",
+                  "priceCurrency": "NOK"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
     {% block extra_head %}{% endblock %}
 </head>
 <body class="bg-white text-black min-h-screen flex flex-col antialiased selection:bg-black selection:text-white bg-grid-pattern">
@@ -33,8 +130,8 @@
     <!-- Navigasjon -->
     <header class="border-b border-black bg-white px-6 py-4 sticky top-0 z-40">
         <div class="max-w-4xl mx-auto flex items-center justify-between">
-            <a href="{% url 'landing:index' %}" class="flex items-center space-x-3">
-                <pre class="ascii-box text-[10px] font-bold leading-none bg-black text-white p-1.5 rounded-none select-none border border-black">
+            <a href="{% url 'landing:index' %}" class="flex items-center space-x-3" aria-label="Blott og Bar forside">
+                <pre class="ascii-box text-[10px] font-bold leading-none bg-black text-white p-1.5 rounded-none select-none border border-black" aria-hidden="true">
 ┌───┐
 │B&B│
 └───┘</pre>
@@ -44,10 +141,10 @@
                 </div>
             </a>
             
-            <nav class="flex items-center space-x-6 text-xs font-medium">
+            <nav class="flex items-center space-x-4 sm:space-x-6 text-xs font-medium" aria-label="Hovednavigasjon">
                 <a href="#applikasjoner" class="text-black hover:underline underline-offset-4">Applikasjoner</a>
                 <a href="#filosofi" class="text-black hover:underline underline-offset-4">Filosofi</a>
-                <a href="https://simpleplanner.blottogbar.no" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-black text-white text-xs font-semibold hover:bg-neutral-800 transition-colors">
+                <a href="https://simpleplanner.blottogbar.no" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-block px-3 py-1.5 bg-black text-white text-xs font-semibold hover:bg-neutral-800 transition-colors">
                     Simple Planner
                 </a>
             </nav>
@@ -55,26 +152,28 @@
     </header>
 
     <!-- Hovedinnhold -->
-    <main class="flex-1">
+    <main class="flex-1" id="hovedinnhold">
         {% block content %}{% endblock %}
     </main>
 
     <!-- Bunntekst -->
-    <footer class="border-t border-black bg-white py-10 px-6 mt-20">
-        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-            <div class="flex items-center space-x-2">
+    <footer class="border-t border-black bg-white py-10 px-6 mt-20" role="contentinfo">
+        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-xs">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-center sm:text-left">
                 <span class="font-bold">blottogbar.no</span>
-                <span>—</span>
-                <span>Minimalistiske nettapplikasjoner</span>
+                <span class="hidden sm:inline text-neutral-400">—</span>
+                <span class="text-neutral-700">Minimalistiske nettapplikasjoner</span>
             </div>
             
-            <div class="flex items-center space-x-4">
-                <a href="https://simpleplanner.blottogbar.no" target="_blank" rel="noopener noreferrer" class="hover:underline underline-offset-4">
-                    simpleplanner.blottogbar.no
-                </a>
-                <span>•</span>
-                <span>© {% now "Y" %}</span>
-            </div>
+            <nav class="flex flex-wrap items-center justify-center gap-4" aria-label="Bunntekstlenker">
+                <a href="https://simpleplanner.blottogbar.no" target="_blank" rel="noopener noreferrer" class="hover:underline underline-offset-4">Simple Planner</a>
+                <span class="text-neutral-400">•</span>
+                <a href="https://simplecards.blottogbar.no" target="_blank" rel="noopener noreferrer" class="hover:underline underline-offset-4">Simple Flashcards</a>
+                <span class="text-neutral-400">•</span>
+                <a href="https://simpleforum.blottogbar.no" target="_blank" rel="noopener noreferrer" class="hover:underline underline-offset-4">Simple Forum</a>
+                <span class="text-neutral-400">•</span>
+                <span class="text-neutral-500">© {% now "Y" %}</span>
+            </nav>
         </div>
     </footer>
 

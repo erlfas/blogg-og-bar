@@ -1,48 +1,59 @@
 {% extends "landing/base.html" %}
 
-{% block title %}Blott og Bar — Enkle nettapplikasjoner{% endblock %}
+{% block title %}Blott og Bar — Minimalistiske og funksjonelle nettapplikasjoner{% endblock %}
 
 {% block content %}
 <div class="max-w-4xl mx-auto px-6 py-12 md:py-16 space-y-16">
 
     <!-- INTRODUKSJON / HERO -->
-    <section class="space-y-6 border-b border-black pb-12">
+    <section class="space-y-6 border-b border-black pb-12" aria-labelledby="hero-tittel">
         <div class="inline-block border border-black px-2.5 py-0.5 text-xs font-mono">
             blott og bar
         </div>
         
-        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-black leading-tight">
-            Minimalistiske verktøy med ren kjernefunksjonalitet.
+        <h1 id="hero-tittel" class="text-3xl sm:text-4xl font-bold tracking-tight text-black leading-tight">
+            Minimalistiske verktøy med ren funksjonalitet.
         </h1>
         
         <p class="text-base sm:text-lg text-neutral-800 leading-relaxed max-w-3xl">
-            Dette nettstedet samler enkle, selvstendige nettapplikasjoner. Målet er å levere verktøy som kun dekker det primære behovet, uten overflødige funksjoner, støy eller kontinuerlig kompleksitetsvekst.
+            Dette nettstedet samler minimalistiske applikasjoner som gir deg akkurat det nødvendige. 
+            De kommer aldri til å vokse til monstrøsiteter full av funksjonalitet du ikke trenger og med en abonnementskostnad som sakte, men sikkert
+            tømme lommeboken din. Hvor bra startet ikke Trello, for å nevne ett eksempel? Jeg elsket appen i dens spede start,
+            men så vokste den til det ugjenkjennelige og fikk et hav at funksjoner jeg ikke hadde behov for. Attpåtil drukner man i disse dager
+            i AI-funksjonalitet. I stedet for bare å lage kortene du trenger om hva du skal huske, så skal AI-en nå hjelpe deg med den egentlig
+            enkle oppgaven med å gjøre noen få klikk med å opprette et kort med en beskrivelse. Man mister konsentrasjonen man hadde med en gang
+            man går inn i appen.
         </p>
 
-        <div class="pt-2">
-            <a href="https://simpleplanner.blottogbar.no" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 px-5 py-2.5 bg-black text-white font-medium text-xs hover:bg-neutral-800 transition-colors">
-                <span>Åpne Simple Planner</span>
+        <div class="pt-2 flex flex-wrap gap-3">
+            <a href="#applikasjoner" class="inline-flex items-center space-x-2 px-5 py-2.5 bg-black text-white font-medium text-xs hover:bg-neutral-800 transition-colors">
+                <span>Utforsk applikasjonene</span>
+                <span class="font-mono">↓</span>
+            </a>
+            <a href="#filosofi" class="inline-flex items-center space-x-2 px-5 py-2.5 border border-black bg-white text-black font-medium text-xs hover:bg-neutral-100 transition-colors">
+                <span>Les filosofien</span>
                 <span class="font-mono">→</span>
             </a>
         </div>
     </section>
 
     <!-- APPLIKASJONER -->
-    <section id="applikasjoner" class="space-y-6">
-        <div class="border-b border-black pb-2">
-            <h2 class="text-xl font-bold tracking-tight text-black">Applikasjoner</h2>
+    <section id="applikasjoner" class="space-y-8" aria-labelledby="apper-tittel">
+        <div class="border-b border-black pb-2 flex items-baseline justify-between">
+            <h2 id="apper-tittel" class="text-xl font-bold tracking-tight text-black">Applikasjoner</h2>
+            <span class="text-xs font-mono text-neutral-600">3 aktive verktøy</span>
         </div>
 
-        <div class="space-y-6">
+        <div class="grid grid-cols-1 gap-6">
             {% for app in apps %}
-            <div class="border border-black p-6 sm:p-8 bg-white space-y-6">
+            <article class="border border-black p-6 sm:p-8 bg-white space-y-6" aria-labelledby="app-{{ app.slug }}">
                 <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                     <div class="flex items-start space-x-4">
                         {% if app.ascii_icon %}
-                        <pre class="ascii-box text-xs font-bold leading-none bg-black text-white p-2 border border-black shrink-0">{{ app.ascii_icon }}</pre>
+                        <pre class="ascii-box text-xs font-bold leading-none bg-black text-white p-2 border border-black shrink-0" aria-hidden="true">{{ app.ascii_icon }}</pre>
                         {% endif %}
                         <div>
-                            <h3 class="text-xl font-bold text-black tracking-tight">{{ app.title }}</h3>
+                            <h3 id="app-{{ app.slug }}" class="text-xl font-bold text-black tracking-tight">{{ app.title }}</h3>
                             <p class="text-xs text-neutral-600 font-mono mt-0.5">{{ app.tagline }}</p>
                         </div>
                     </div>
@@ -58,11 +69,11 @@
 
                 {% if app.features %}
                 <div class="border-t border-neutral-300 pt-4">
-                    <div class="text-xs font-bold uppercase tracking-wider text-black mb-2">Egenskaper</div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-black mb-2">Egenskaper</h4>
                     <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-neutral-700 font-mono">
                         {% for feature in app.features %}
                         <li class="flex items-center space-x-2">
-                            <span>–</span>
+                            <span aria-hidden="true">–</span>
                             <span>{{ feature }}</span>
                         </li>
                         {% endfor %}
@@ -71,20 +82,20 @@
                 {% endif %}
 
                 <div class="pt-2">
-                    <a href="{{ app.url }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 px-4 py-2 border border-black bg-black text-white text-xs font-semibold hover:bg-neutral-800 transition-colors">
+                    <a href="{{ app.url }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 px-4 py-2 border border-black bg-black text-white text-xs font-semibold hover:bg-neutral-800 transition-colors" aria-label="Gå til {{ app.title }} på {{ app.url }}">
                         <span>{{ app.button_text|default:"Gå til applikasjon" }}</span>
-                        <span class="font-mono">→</span>
+                        <span class="font-mono" aria-hidden="true">→</span>
                     </a>
                 </div>
-            </div>
+            </article>
             {% endfor %}
         </div>
     </section>
 
     <!-- FILOSOFI -->
-    <section id="filosofi" class="space-y-6 border-t border-black pt-12">
+    <section id="filosofi" class="space-y-6 border-t border-black pt-12" aria-labelledby="filosofi-tittel">
         <div>
-            <h2 class="text-xl font-bold tracking-tight text-black">Filosofi</h2>
+            <h2 id="filosofi-tittel" class="text-xl font-bold tracking-tight text-black">Filosofi</h2>
             <p class="text-xs text-neutral-600 font-mono mt-1">Prinsipper for utvikling og drift</p>
         </div>
 
